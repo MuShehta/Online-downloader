@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>On-line Download</title>
+    <meta name="google-site-verification" content="eNkLQaVlR2h4H7_V7jVekNB_RcrRqNCs17iPvg0xq3M" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        form {
+            margin: 50px auto;
+        }
+        form .text{
+            height: 40px;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            margin-bottom: 20px;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        form .button{
+            height: 40px;
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: .25rem;
+            border: 1px solid transparent;
+            font-size: 1rem;
+        }
+
+        body {
+            margin: 150px 0;
+        }
+
+        .cart {
+            margin: 0 0 40px;
+            background-color: #efefef;
+        }
+    </style>
+
+    <!-- start body  -->
+</head>
+<body>
+    <div class="container">
+
+        <!-- start form  -->
+        <form mewthod="GET" class="col col-md-6">
+            <input class="text col col-12 col-md-8" type="text" name="url" placeholder="Copy link here">
+            <input class="button col col-12 col-md-3" type="submit" value="Download">
+        </form>
+
+        
+        {% if  data%}
+                        
+        <!-- start card  -->
+        <div class="cart">
+            <div class="row" style="width: 100%;">
+                <img class="col col-md-3" src="{{data.info.img}}" alt="Image of video">
+                <div class="col col-md-6">
+                <p class="card-text">{{data.info.title}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- start row  -->
+
+        <div class="row">
+
+        <div class="col col-md-6">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Quality</th>
+                    <th scope="col">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for video in data.vedio %}
+                        <tr>
+                            <td>{{video.type}}</td>
+                            <td>{{video.res}}</td>
+                            <td><a class="btn btn-dark" href="{{ video.url }}"  target="_blank" download>Dowenload</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col col-md-6">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Quality</th>
+                    <th scope="col">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for video in data.audio %}
+                        <tr>
+                            <td>{{video.type}}</td>
+                            <td>{{video.res}}</td>
+                            <td><a class="btn btn-dark" href="{{ video.url }}" target="_blank" download>Dowenload</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col col-md-6">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Quality</th>
+                    <th scope="col">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for video in data.vedio_only %}
+                        <tr>
+                            <td>{{video.type}}</td>
+                            <td>{{video.res}}</td>
+                            <td><a class="btn btn-dark" href="{{ video.url }}" target="_blank" download>Dowenload</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    {% endif %}
+    </div>
+    
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
